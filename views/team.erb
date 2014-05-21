@@ -1,4 +1,4 @@
-<h3><%= @player[:team_name] %></h3>
+<h3><%= @team_name %></h3>
 
 <table>
   <thead>
@@ -9,10 +9,17 @@
   </thead>
 
   <tbody>
-    <tr>
-      <td><%= @player[:name] %></td>
-      <td><%= @player[:position] %></td>
-    </tr>
+    <% @team_members.each do |member| %>
+      <tr>
+        <td>
+          <%= member[:name] %>
+        </td>
+        <td>
+          <%= member[:position] %>
+        </td>
+      </tr>
+    <% end %>
+
   </tbody>
 
 </table>
