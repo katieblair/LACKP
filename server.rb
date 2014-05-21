@@ -43,10 +43,15 @@ end
 
 get '/teams/:team_name' do
   @players = read_file('lackp_starting_rosters.csv')
-  @player = @players.find do |player|
-    player[:team_name] == params[:team_name]
+  @team_name = params[:team_name]
 
+  @team_members =[]
+  @players.each do |player|
+    if player[:team_name] == @team_name
+      @team_members << player
+    end
   end
+
   erb :team
 end
 
